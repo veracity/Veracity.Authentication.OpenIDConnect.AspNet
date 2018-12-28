@@ -1,0 +1,8 @@
+﻿<configuration>
+   <appSettings>
+    <add key="veracity:ClientId" value="" />
+    <add key="veracity:ClientSecret" value="" />
+    <add key="veracity:RedirectUri" value="" />
+    <add key="veracity:APISubscriptionKey" value="" />
+  </appSettings>
+</configuration>
