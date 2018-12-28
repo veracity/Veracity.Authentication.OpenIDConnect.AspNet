@@ -5,5 +5,6 @@
     <add key="veracity:ClientSecret" xdt:Transform="Remove" xdt:Locator="Match(name)"  />
     <add key="veracity:RedirectUri" xdt:Transform="Remove" xdt:Locator="Match(name)"  />
     <add key="veracity:APISubscriptionKey" xdt:Transform="Remove" xdt:Locator="Match(name)"  />
+    <add key="owin:AppStartup" xdt:Transform="Remove" xdt:Locator="Match(name)"  />
   </appSettings>
 </configuration>
