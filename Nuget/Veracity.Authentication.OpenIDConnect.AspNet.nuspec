@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Veracity.Authentication.OpenIDConnect.AspNet</id>
-    <version>1.0.0-preview006</version>
+    <version>1.0.0-preview007</version>
     <title>Veracity.Authentication.OpenIDConnect.AspNet</title>
     <authors>Veracity</authors>
     <owners>DNV GL Veracity</owners>
@@ -20,6 +20,7 @@
       <dependency id="Microsoft.Owin.Security.Cookies" version="4.0.0" />
       <dependency id="Microsoft.Identity.Client" version="2.6.2" />
       <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
+      <dependency id="Microsoft.IdentityModel.Protocols.OpenIdConnect" version="5.3.0" />
     </dependencies>
   </metadata>
   </package>
