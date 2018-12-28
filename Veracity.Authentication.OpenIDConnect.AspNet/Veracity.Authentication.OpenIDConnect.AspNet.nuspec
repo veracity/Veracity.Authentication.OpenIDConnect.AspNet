@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet</projectUrl>
     <iconUrl>https://avatars3.githubusercontent.com/u/28704632?s=200&amp;amp;v=4</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Veracity authentication library for applications based on ASP.NET Framework</description>
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>Veracity Authentication NET OpenId Oauth</tags>
