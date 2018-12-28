@@ -6,7 +6,7 @@
     <title>Veracity.Authentication.OpenIDConnect.AspNet</title>
     <authors>Ming Derek Wang</authors>
     <owners>DNV GL Veracity</owners>
-    <licenseUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet/blob/master/LICENSE</licenseUrl>
+    <license type="file">LICENSE</license>
     <projectUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet</projectUrl>
     <iconUrl>https://avatars3.githubusercontent.com/u/28704632?s=200&amp;amp;v=4</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -22,8 +22,4 @@
       <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="README.md" target="" />
-    <file src="LICENSE" target="" />
-  </files>
 </package>
