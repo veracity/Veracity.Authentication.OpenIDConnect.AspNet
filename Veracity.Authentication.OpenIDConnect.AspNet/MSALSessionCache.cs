@@ -6,7 +6,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Veracity.Authentication.OpenIDConnect
+namespace Veracity.Authentication.OpenIDConnect.AspNet
 {
     using System.Threading;
     using System.Web;
@@ -24,38 +24,38 @@ namespace Veracity.Authentication.OpenIDConnect
 
         public MSALSessionCache(string userId, HttpContextBase httpcontext)
         {
-            UserId = userId;
-            CacheId = UserId + "_TokenCache";
-            httpContext = httpcontext;
-            Load();
+            this.UserId = userId;
+            this.CacheId = this.UserId + "_TokenCache";
+            this.httpContext = httpcontext;
+            this.Load();
         }
 
         public TokenCache GetMsalCacheInstance()
         {
-            cache.SetBeforeAccess(BeforeAccessNotification);
-            cache.SetAfterAccess(AfterAccessNotification);
-            Load();
-            return cache;
+            this.cache.SetBeforeAccess(this.BeforeAccessNotification);
+            this.cache.SetAfterAccess(this.AfterAccessNotification);
+            this.Load();
+            return this.cache;
         }
 
         public void SaveUserStateValue(string state)
         {
             SessionLock.EnterWriteLock();
-            httpContext.Session[CacheId + "_state"] = state;
+            this.httpContext.Session[this.CacheId + "_state"] = state;
             SessionLock.ExitWriteLock();
         }
         public string ReadUserStateValue()
         {
             string state = string.Empty;
             SessionLock.EnterReadLock();
-            state = (string)httpContext.Session[CacheId + "_state"];
+            state = (string)this.httpContext.Session[this.CacheId + "_state"];
             SessionLock.ExitReadLock();
             return state;
         }
         public void Load()
         {
             SessionLock.EnterReadLock();
-            cache.Deserialize((byte[])httpContext.Session[CacheId]);
+            this.cache.Deserialize((byte[])this.httpContext.Session[this.CacheId]);
             SessionLock.ExitReadLock();
         }
 
@@ -64,10 +64,10 @@ namespace Veracity.Authentication.OpenIDConnect
             SessionLock.EnterWriteLock();
 
             // Optimistically set HasStateChanged to false. We need to do it early to avoid losing changes made by a concurrent thread.
-            cache.HasStateChanged = false;
+            this.cache.HasStateChanged = false;
 
             // Reflect changes in the persistent store
-            httpContext.Session[CacheId] = cache.Serialize();
+            this.httpContext.Session[this.CacheId] = this.cache.Serialize();
             SessionLock.ExitWriteLock();
         }
 
@@ -75,16 +75,16 @@ namespace Veracity.Authentication.OpenIDConnect
         // Reload the cache from the persistent store in case it changed since the last access.
         void BeforeAccessNotification(TokenCacheNotificationArgs args)
         {
-            Load();
+            this.Load();
         }
 
         // Triggered right after MSAL accessed the cache.
         void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
             // if the access operation resulted in a cache update
-            if (cache.HasStateChanged)
+            if (this.cache.HasStateChanged)
             {
-                Persist();
+                this.Persist();
             }
         }
     }

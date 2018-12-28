@@ -2,9 +2,9 @@
 <package >
   <metadata>
     <id>Veracity.Authentication.OpenIDConnect.AspNet</id>
-    <version>1.0.0-preview004</version>
+    <version>1.0.0-preview006</version>
     <title>Veracity.Authentication.OpenIDConnect.AspNet</title>
-    <authors>Ming Derek Wang</authors>
+    <authors>Veracity</authors>
     <owners>DNV GL Veracity</owners>
     <licenseUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet</projectUrl>

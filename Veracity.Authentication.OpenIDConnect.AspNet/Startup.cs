@@ -6,10 +6,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Veracity.Authentication.OpenIDConnect
+namespace Veracity.Authentication.OpenIDConnect.AspNet
 {
     using System.Threading.Tasks;
     using System.Web;
+
     using Microsoft.Identity.Client;
     using Microsoft.IdentityModel.Protocols.OpenIdConnect;
     using Microsoft.IdentityModel.Tokens;
@@ -17,6 +18,7 @@ namespace Veracity.Authentication.OpenIDConnect
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.Notifications;
     using Microsoft.Owin.Security.OpenIdConnect;
+
     using Owin;
 
     public class Startup

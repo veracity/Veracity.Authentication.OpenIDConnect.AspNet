@@ -6,7 +6,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Veracity.Authentication.OpenIDConnect
+namespace Veracity.Authentication.OpenIDConnect.AspNet
 {
     using System;
     using System.Collections.Generic;
