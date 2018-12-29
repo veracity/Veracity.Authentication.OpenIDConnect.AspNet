@@ -1,5 +1,5 @@
 ﻿// <copyright file="Startup.cs" company="DNV GL Veracity">
-//  Licensed under the Apache License, Version 2.0.   
+//  Licensed under the MIT License.   
 // </copyright>
 // <summary>
 //   Defines the Startup type.

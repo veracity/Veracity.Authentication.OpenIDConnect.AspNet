@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Veracity.Authentication.OpenIDConnect.AspNet</id>
-    <version>1.0.0-preview007</version>
+    <version>1.0.0</version>
     <title>Veracity.Authentication.OpenIDConnect.AspNet</title>
     <authors>Veracity</authors>
     <owners>DNV GL Veracity</owners>
