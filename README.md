@@ -1,4 +1,4 @@
-# Veracity.Authentication.OpenIDConnect.AspNet
+# Veracity.Authentication.OpenIDConnect.AspNet [![NuGet version]
 (https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet.svg)](https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet)
 Veracity authentication library for applications based on ASP.NET Framework(.NET Framework Version >= 4.6.1)
 ## For new applications
