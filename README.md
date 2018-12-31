@@ -3,7 +3,7 @@ Veracity authentication library for applications based on ASP.NET Framework(.NET
 ## For new applications
 We highly recommanded you checkout https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNetCore to use Veracity app generator to generator .net core solution. 
 
-If we insist to use .net framwork solution or you want to migrate your solution from legcy SAML based authentication to Azure B2C OpenId, download the sample code and checkout usage in next section. 
+If you insist to use .net framwork solution or you want to migrate your solution from legcy SAML based authentication to Azure B2C OpenId, download the sample code and checkout usage in next section. 
 
 ## For existing applications
 1. Make sure that your .NET Framework version >= 4.6.1. If not, [download the latest version](https://www.microsoft.com/net/download).
