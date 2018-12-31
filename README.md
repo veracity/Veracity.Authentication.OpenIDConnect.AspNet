@@ -1,12 +1,9 @@
 # Veracity.Authentication.OpenIDConnect.AspNet [![NuGet version](https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet.svg)](https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet)
 Veracity authentication library for applications based on ASP.NET Framework(.NET Framework Version >= 4.6.1)
 ## For new applications
-1. Go to https://developer.veracity.com/ and enroll as developer
-2. Create your project and applications using the developer self-service
-3. Get  integration information through email which includes client ID etc. 
-4. Go to https://developer.veracity.com/doc/create-veracity-app and see the instructions for creating Veracity apps using the Veracity App Generator(https://github.com/veracity/generator-veracity)
-5. Update the Veracity appSettings in the `web.config` file
-6. Run the application 
+We highly recommanded you checkout https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNetCore to use Veracity app generator to generator .net core solution. 
+
+If we insist to use .net framwork solution or you want to migrate your solution from legcy SAML based authentication to Azure B2C OpenId, download the sample code and checkout usage in next section. 
 
 ## For existing applications
 1. Make sure that your .NET Framework version >= 4.6.1. If not, [download the latest version](https://www.microsoft.com/net/download).
@@ -17,6 +14,10 @@ Veracity authentication library for applications based on ASP.NET Framework(.NET
     <add key="veracity:ClientSecret" value="" />
     <add key="veracity:RedirectUri" value="" />
     <add key="veracity:APISubscriptionKey" value="" />
+```
+Please note that we will add the above appsetting during the installation, if you cannot find it, please add those into appSetting. The following setting make sure you app connect to Veracity authentication library successfully. 
+```XML
+    <add key="owin:AppStartup" value="Veracity.Authentication.OpenIDConnect.AspNet.Startup" />
 ```
 4. Create AccountController if you do not have and put following code into `AccountController.cs` , please refer Demo https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet/blob/master/Sample/Demo/Demo/Controllers/AccountController.cs 
 ```C#
