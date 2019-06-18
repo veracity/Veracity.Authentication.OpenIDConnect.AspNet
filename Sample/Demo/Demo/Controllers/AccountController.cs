@@ -26,8 +26,7 @@ namespace Demo.Controllers
             if (Request.IsAuthenticated)
             {
                 IEnumerable<AuthenticationDescription> authTypes = this.HttpContext.GetOwinContext().Authentication.GetAuthenticationTypes();
-                this.HttpContext.GetOwinContext().Authentication.SignOut(authTypes.Select(t => t.AuthenticationType).ToArray());
-                Request.GetOwinContext().Authentication.GetAuthenticationTypes();
+                this.HttpContext.GetOwinContext().Authentication.SignOut(authTypes.Select(t => t.AuthenticationType).ToArray()); 
             }
         }
     }

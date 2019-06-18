@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <appSettings>
-    <add key="veracity:ClientId" value="" xdt:Transform="Insert" />
-    <add key="veracity:ClientSecret" value="" xdt:Transform="Insert"/>
-    <add key="veracity:RedirectUri" value="" xdt:Transform="Insert"/>
-    <add key="veracity:APISubscriptionKey" value="" xdt:Transform="Insert"/>
-    <add key="owin:AppStartup" value="Veracity.Authentication.OpenIDConnect.AspNet.Startup" xdt:Transform="Insert"/>
+  <appSettings xdt:Transform="InsertIfMissing" >
+    <add key="veracity:ClientId" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="veracity:ClientSecret" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="veracity:RedirectUri" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+	<add key="veracity:PostLogoutRedirectUri" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="veracity:APISubscriptionKey" value="" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="owin:AppStartup" value="Veracity.Authentication.OpenIDConnect.AspNet.Startup" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
   </appSettings>
 </configuration>

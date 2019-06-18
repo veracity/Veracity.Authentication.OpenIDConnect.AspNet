@@ -2,7 +2,7 @@
 //  Licensed under the MIT License.   
 // </copyright>
 // <summary>
-//   Defines the VeracityPlatformService type.
+//   Class that provides the ability to get an authentication header from Veracity
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -10,64 +10,77 @@ namespace Veracity.Authentication.OpenIDConnect.AspNet
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Security.Authentication;
-    using System.Security.Claims;
     using System.Threading.Tasks;
-    using System.Web;
-
     using Microsoft.Identity.Client;
 
+    /// <summary>
+    /// Class that provides the ability to get an authentication header from Veracity
+    /// </summary>
     public class VeracityPlatformService
     {
-        private readonly HttpContextBase _httpContext;
-
-        public VeracityPlatformService(HttpClient client, HttpContextBase httpContext)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VeracityPlatformService"/> class.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        public VeracityPlatformService(HttpClient client)
         {
             client.BaseAddress = new Uri(VeracityIntegrationOptions.VeracityPlatformServiceUrl);
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", VeracityIntegrationOptions.VeracityPlatformServiceKey);
             this.Client = client;
-            this._httpContext = httpContext;
         }
 
+        /// <summary>
+        /// Gets the HTTP client which has the APIM subscription key header already added
+        /// </summary>
+        /// <value>
+        /// The client.
+        /// </value>
         public HttpClient Client { get; }
 
+        /// <summary>
+        /// Gets the authentication header asynchronously
+        /// </summary>
+        /// <returns>An <see cref="AuthenticationHeaderValue"></see>/></returns>
+        /// <exception cref="MsalUiRequiredException"></exception>
+        /// <exception cref="HttpRequestException"></exception>
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync()
         {
-            var accessToken = await this.GetAccessTokenAsync();
+            string accessToken = await this.GetAccessTokenAsync();
             return new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
+        /// <summary>
+        /// Gets an access token asynchronously.
+        /// </summary>
+        /// <returns></returns>
         private async Task<string> GetAccessTokenAsync()
         {
-            var signedInUserId = ClaimsPrincipal.Current.FindFirst("UserId").Value;
-            var scope = VeracityIntegrationOptions.VeracityPlatformServiceScopes.Split(' ');
-            TokenCache userTokenCache = new MSALSessionCache(signedInUserId, this._httpContext).GetMsalCacheInstance();
-            ConfidentialClientApplication cca = new ConfidentialClientApplication(
-                VeracityIntegrationOptions.ClientId,
-                VeracityIntegrationOptions.Authority,
-                VeracityIntegrationOptions.RedirectUri,
-                new ClientCredential(VeracityIntegrationOptions.ClientSecret),
-                userTokenCache,
-                null);
+            IConfidentialClientApplication app = MSALAppBuilder.BuildConfidentialClientApplication();
+
+            AuthenticationResult result;
+            IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+            string[] scopes = VeracityIntegrationOptions.VeracityPlatformServiceScopes.Split(' ');
+
+            var accountList = accounts.ToList();
+            var account = accountList.FirstOrDefault();
+
             try
             {
-                IEnumerable<IAccount> accounts = await cca.GetAccountsAsync();
-                IAccount firstAccount = accounts.FirstOrDefault();
-                var result = await cca.AcquireTokenSilentAsync(
-                                 scope,
-                                 firstAccount,
-                                 VeracityIntegrationOptions.Authority,
-                                 false);
-                return result.AccessToken;
+                // try to get an already cached token
+                result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
             }
-            catch (MsalUiRequiredException)
+            catch (MsalUiRequiredException ex)
             {
                 // Cannot find any cache user in memory, you should sign out and login again.
-                throw new AuthenticationException("Cannot find login user credential, please sign out and login again");
+                Debug.WriteLine($"Cannot find any cache user in memory {ex.Message}");
+                throw;
             }
+
+            return result.AccessToken;
         }
     }
 }
