@@ -60,7 +60,16 @@ namespace Veracity.Authentication.OpenIDConnect.AspNet
                     ResponseType = OpenIdConnectResponseType.CodeIdToken,
                     TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = false,
+                        ValidateIssuer = true,
+                        IssuerValidator = (issuer, token, tokenValidationParameters) =>
+                        {
+                            if (issuer.StartsWith(VeracityIntegrationOptions.Issuer, System.StringComparison.OrdinalIgnoreCase))
+                            {
+                                return issuer;
+                            }
+
+                            throw new SecurityTokenInvalidIssuerException("Invalid issuer");
+                        },
                         NameClaimType = "UserId"
                     },
                     Scope = $"openid offline_access {VeracityIntegrationOptions.VeracityPlatformServiceScopes}"

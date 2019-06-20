@@ -26,9 +26,10 @@ namespace Veracity.Authentication.OpenIDConnect.AspNet
         private readonly MemoryCache memoryCache = MemoryCache.Default;
 
         /// <summary>
-        /// The duration till the tokens are kept in memory cache. In production, a higher value, upto 90 days is recommended.
+        /// The duration that the tokens are kept in memory cache.
+        /// Veracity recommends that this is set to half of the refresh token lifetime of 7 days, hence 3.5 days.
         /// </summary>
-        private readonly DateTimeOffset cacheDuration = DateTimeOffset.Now.AddHours(48);
+        private readonly DateTimeOffset cacheDuration = DateTimeOffset.Now.AddDays(3.5);
 
         /// <summary>
         /// The internal handle to the client's instance of the Cache

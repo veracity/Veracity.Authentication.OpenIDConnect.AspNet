@@ -125,5 +125,13 @@ namespace Veracity.Authentication.OpenIDConnect.AspNet
         /// The post logout redirect URI.
         /// </value>
         public static string PostLogoutRedirectUri => ConfigurationManager.AppSettings["veracity:PostLogoutRedirectUri"] ?? RedirectUri;
+
+        /// <summary>
+        /// Gets the token issuer for validation of received tokens
+        /// </summary>
+        /// <value>
+        /// The expected token issuer string.
+        /// </value>
+        public static string Issuer => ConfigurationManager.AppSettings["veracity:Issuer"] ?? "https://login.microsoftonline.com/a68572e3-63ce-4bc1-acdc-b64943502e9d";
     }
 }
