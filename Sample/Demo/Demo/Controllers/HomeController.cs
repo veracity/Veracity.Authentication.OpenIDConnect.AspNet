@@ -29,7 +29,7 @@ namespace Demo.Controllers
         [Authorize]
         public async Task<ActionResult> CallApiAsync()
         {
-            var service = new VeracityPlatformService(client, this.HttpContext);
+            var service = new VeracityPlatformService(client);
             var request = new HttpRequestMessage(HttpMethod.Get, "/platform/my/profile");
             request.Headers.Authorization = await service.GetAuthenticationHeaderAsync();
             var response = await client.SendAsync(request);
