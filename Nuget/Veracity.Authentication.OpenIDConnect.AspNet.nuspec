@@ -4,12 +4,11 @@
     <id>Veracity.Authentication.OpenIDConnect.AspNet</id>
     <version>1.1.0</version>
     <authors>Veracity</authors>
-    <owners>Veracity</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="file">LICENSE</license>
-    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <owners>DNV GL Veracity</owners>
+    <licenseUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNet</projectUrl>
-    <iconUrl>https://avatars3.githubusercontent.com/u/28704632?s=200&amp;amp;amp;v=4</iconUrl>
+    <iconUrl>https://avatars3.githubusercontent.com/u/28704632?s=200&amp;amp;v=4</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Veracity authentication library for applications based on ASP.NET Framework</description>
     <releaseNotes>Updated dependencies</releaseNotes>
     <copyright>Copyright 2019</copyright>
