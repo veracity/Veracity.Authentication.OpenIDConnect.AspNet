@@ -1,11 +1,8 @@
 # Veracity.Authentication.OpenIDConnect.AspNet [![NuGet version](https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet.svg)](https://badge.fury.io/nu/Veracity.Authentication.OpenIDConnect.AspNet)
 Veracity authentication library for applications based on ASP.NET Framework (requires .NET Framework Version >= 4.7.1)
-## For new applications
-We highly recommend that you checkout https://github.com/veracity/Veracity.Authentication.OpenIDConnect.AspNetCore to use the Veracity app generator to generate a .net core solution. 
 
-If you need to use a .net framwork solution or you want to migrate your solution from legcy SAML based authentication to Azure B2C OpenId, download the sample code and checkout usage in next section. 
+#### Note: This package is deprecated, please look at https://github.com/veracity/Veracity-Identity-and-Services-Api to find out how to integrate with Veracity identity(https://www.nuget.org/packages/Veracity.Common.OAuth/). The new package reflects the latest changes of Veracity package,it merge the service api package and identity package, also add option to let you choose how far you want to integrate with Veracity and where to persist you token cache etc. We will still support this one but we suggest you migrate to new one to enjoy the new feature and flexiablily. 
 
-## For existing applications
 1. Make sure that your .NET Framework version >= 4.7.1. If not, [download the latest version](https://www.microsoft.com/net/download).
 2. Go to the NuGet package manager and install `Veracity.Authentication.OpenIDConnect.AspNet`
 3. Update the `web.config` file with the information you get after registering your application, go to the Veracity support page and request a subscription key for platform services.
